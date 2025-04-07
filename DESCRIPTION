@@ -1,16 +1,13 @@
-Package: ji.rpkg.template
-Title: Your Package Title in Title Case
+Package: vimclimate
+Title: Access Climate Data Time-series from the Vaccine Impact Modelling
+    Consortium
 Version: 0.0.0.9000
-Authors@R: c(
+Authors@R: 
     person("Pratik", "Gupte", , "pratik.gupte@lshtm.ac.uk", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-5294-7819")),
-    person("Abdul Latif Jameel Institute for Disease and Emergency Analytics", role = "fnd"),
-    person("Imperial College of Science, Technology and Medicine", role = c("cph", "fnd"))
-  )
-Description: Your package description. It must end with a period (".") and
-    include relevant bibliographical references if applicable, using the
-    following format: Author et al. (2023) <doi:10.5281/zenodo.6619350>.
+           comment = c(ORCID = "0000-0001-5294-7819"))
+Description: Access pre-made climate data time-series.
 License: MIT + file LICENSE
+URL: https://github.com/vimc/vimclimate, https://vimc.github.io/vimclimate
 Suggests: 
     knitr,
     rmarkdown,
@@ -18,7 +15,6 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
-Config/Needs/website: jameel-institute/jameelinst.rpkg.theme
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-GB

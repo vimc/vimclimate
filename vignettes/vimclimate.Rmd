@@ -1,8 +1,8 @@
 ---
-title: "ji-rpkg-template"
+title: "Getting started with vimclimate"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ji-rpkg-template}
+  %\VignetteIndexEntry{Getting started with vimclimate}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(ji.rpkg.template)
+library(vimclimate)
 ```
 
 This is a special vignette, which shares the same name as the package.

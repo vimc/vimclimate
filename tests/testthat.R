@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(ji.rpkg.template)
+library(vimclimate)
 
-test_check("ji.rpkg.template")
+test_check("vimclimate")

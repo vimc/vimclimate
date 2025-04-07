@@ -1,6 +1,5 @@
 # NOTE: Update the `url` field as needed
-# e.g. "https://jameel-institute.github.io/daedalus/"
-url: ~
+# e.g. "https://vimc.github.io/vimclimate/"
+url: https://vimc.github.io/vimclimate/
 template:
   bootstrap: 5
-  package: jameelinst.rpkg.theme
