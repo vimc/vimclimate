@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# vimclimate: Access climate data time-series from the vaccine impact modelling consortium
+# vimclimate: Access climate data time-series from the Vaccine Impact Modelling Consortium
 
 <!-- badges: start -->
 [![Project Status: Concept - Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
@@ -28,7 +28,14 @@ _vimclimate_ is an R package that helps access pre-made climatic variable time-s
 
 ## Installation
 
-You can install the development version of _vimclimate_ from the [VIMC R-universe](https://vimc.r-universe.dev/) with:
+You can install the development version of _vimclimate_ from GitHub [GitHub](https://github.com/) using the _pak_ package:
+
+``` r
+install.packages("pak")
+pak::pak("vimc/vimclimate")
+```
+
+<!-- the [VIMC R-universe](https://vimc.r-universe.dev/) with:
 
 ```r
 installation from R-universe
@@ -40,12 +47,7 @@ install.packages(
 )
 ```
 
-or from GitHub [GitHub](https://github.com/) using the _pak_ package:
-
-``` r
-install.packages("pak")
-pak::pak("vimc/vimclimate")
-```
+or from -->
 
 ## Quick start
 

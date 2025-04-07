@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# vimclimate: Access climate data time-series from the vaccine impact modelling consortium
+# vimclimate: Access climate data time-series from the Vaccine Impact Modelling Consortium
 
 <!-- badges: start -->
 
@@ -22,10 +22,16 @@ variable time-series data for use in modelling.
 
 ## Installation
 
-You can install the development version of *vimclimate* from the [VIMC
-R-universe](https://vimc.r-universe.dev/) with:
+You can install the development version of *vimclimate* from GitHub
+[GitHub](https://github.com/) using the *pak* package:
 
 ``` r
+install.packages("pak")
+pak::pak("vimc/vimclimate")
+```
+
+<!-- the [VIMC R-universe](https://vimc.r-universe.dev/) with:
+&#10;```r
 installation from R-universe
 install.packages(
   "vimclimate", 
@@ -34,13 +40,7 @@ install.packages(
   )
 )
 ```
-
-or from GitHub [GitHub](https://github.com/) using the *pak* package:
-
-``` r
-install.packages("pak")
-pak::pak("vimc/vimclimate")
-```
+&#10;or from -->
 
 ## Quick start
 
