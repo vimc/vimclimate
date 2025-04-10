@@ -8,6 +8,14 @@ Authors@R:
 Description: Access pre-made climate data time-series.
 License: MIT + file LICENSE
 URL: https://github.com/vimc/vimclimate, https://vimc.github.io/vimclimate
+Imports: 
+    arrow,
+    checkmate,
+    cli,
+    countrycode,
+    here,
+    lubridate,
+    rlang
 Suggests: 
     knitr,
     rmarkdown,

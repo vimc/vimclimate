@@ -14,3 +14,5 @@
 ^pkgdown$
 ^tools$
 ^air.toml$
+^scratch-data$
+^format-R.sh$
