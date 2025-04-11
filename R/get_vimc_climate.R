@@ -42,7 +42,7 @@ get_vimc_climate <- function(
   # allow date as string because actually using Date class is annoying
   if (!checkmate::test_vector(date_range, len = 2)) {
     cli::cli_abort(
-      "`date_range` must be a 2-element vector; currently has a length of
+      "`date_range` must be a 2-element vector; currently has a length of \\
       length(date_range)"
     )
   }
@@ -107,13 +107,13 @@ get_vimc_climate <- function(
 
   if (is.na(country_iso3c)) {
     cli::cli_abort(
-      "Could not convert `country` '{country}' to an ISO 3 character
+      "Could not convert `country` '{country}' to an ISO 3 character \\
       country code; please check `country`."
     )
   }
 
   # abs path to data; currently only supporting local data
-  data_location <- here::here(data_location, country_iso3c)
+  data_location <- file.path(data_location, country_iso3c)
   if (dir.exists(data_location)) {
     files <- list.files(data_location, full.names = TRUE)
     data_source_id <- data_source_names[data_source]
