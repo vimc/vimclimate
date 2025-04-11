@@ -42,7 +42,7 @@ get_vimc_climate <- function(
   # allow date as string because actually using Date class is annoying
   if (!checkmate::test_vector(date_range, len = 2)) {
     cli::cli_abort(
-      "`date_range` must be a 2-element vector; currently has a length of \\
+      "`date_range` must be a 2-element vector; currently has a length of
       length(date_range)"
     )
   }
@@ -55,22 +55,16 @@ get_vimc_climate <- function(
     )
   if (!is_good_daterange) {
     cli::cli_abort(
-      "`date_range` must be either a `<Date>` or `string` vector, but is not."
+      "`date_range` must be either a `<Date>` or `string` vector, but is a
+      {.cls {class(date_range)}}"
     )
   } else if (is.character(date_range)) {
     # convert to Date
     date_range <- lubridate::as_date(date_range)
   }
 
-  # check for sensible date values and throw a warning if not good
-  # this will need to be fixed later to date ranges for which climate data
-  # are actually available
-  sensible_limits <- lubridate::interval("1950-01-01", "2100-12-31")
-  if (!all(lubridate::`%within%`(date_range, sensible_limits))) {
-    cli::cli_warn(
-      "`date_range` requested is outside of the range {sensible_limits}"
-    )
-  }
+  # NOTE: need to check for sensible date values and throw an error
+  # if data are not available in the range
 
   # allow only one choice at a time to avoid ambiguous return type
   data_source <- rlang::arg_match(data_source)
@@ -125,6 +119,14 @@ get_vimc_climate <- function(
 
     # search for files
     target_file <- files[grepl(search_pattern, files)]
+
+    # check that file is found
+    if (identical(target_file, character(0))) {
+      cli::cli_abort(
+        "File '{target_file}' not found; please check that data are present in
+        '{data_location}'"
+      )
+    }
 
     # read files and return data.frame
     data <- arrow::read_parquet(target_file)
