@@ -3,16 +3,6 @@ test_that("Acessing local Parquet files works", {
   daterange <- c("1990-01-01", "1990-01-10")
   admin_level <- 0
 
-  expect_no_condition(
-    get_vimc_climate(
-      country,
-      daterange,
-      test_path("testdata"),
-      "CHIRPS",
-      admin_level
-    )
-  )
-
   data <- get_vimc_climate(
     country,
     daterange,

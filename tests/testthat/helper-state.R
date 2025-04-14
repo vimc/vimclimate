@@ -14,21 +14,48 @@ get_pars_toreset <- function() {
   pars <- pars[!names(pars) %in% c("usr", "xaxp", "yaxp")]
 }
 
+# check whether running on Windows
+# NOTE: if on Windows, {lubridate} will create an explicit TZDIR env variable
+# and {arrow} will set an option for multi-threading (IMO): `arrow.use_threads`.
+# Changes in these are not tested in the global state checker.
+
+sys_info <- Sys.info()
+os_name <- sys_info["sysname"]
+windows <- "windows"
+on_windows <- grepl(windows, os_name, TRUE)
+
 if (getRversion() >= "4.0.0") {
-  testthat::set_state_inspector(function() {
-    list(
-      attached = search(),
-      connections = getAllConnections(),
-      cwd = getwd(),
-      envvars = Sys.getenv(),
-      handlers = globalCallingHandlers(),
-      libpaths = .libPaths(),
-      locale = Sys.getlocale(),
-      options = options(),
-      packages = .packages(all.available = TRUE),
-      sink = sink.number(),
-      timezone = Sys.timezone(),
-      NULL
-    )
-  })
+  if (on_windows) {
+    testthat::set_state_inspector(function() {
+      list(
+        attached = search(),
+        connections = getAllConnections(),
+        cwd = getwd(),
+        handlers = globalCallingHandlers(),
+        libpaths = .libPaths(),
+        locale = Sys.getlocale(),
+        packages = .packages(all.available = TRUE),
+        sink = sink.number(),
+        timezone = Sys.timezone(),
+        NULL
+      )
+    })
+  } else {
+    testthat::set_state_inspector(function() {
+      list(
+        attached = search(),
+        connections = getAllConnections(),
+        cwd = getwd(),
+        envvars = Sys.getenv(),
+        handlers = globalCallingHandlers(),
+        libpaths = .libPaths(),
+        locale = Sys.getlocale(),
+        options = options(),
+        packages = .packages(all.available = TRUE),
+        sink = sink.number(),
+        timezone = Sys.timezone(),
+        NULL
+      )
+    })
+  }
 }
