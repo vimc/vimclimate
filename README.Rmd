@@ -28,17 +28,10 @@ _vimclimate_ is an R package that helps access pre-made climatic variable time-s
 
 ## Installation
 
-You can install the development version of _vimclimate_ from GitHub [GitHub](https://github.com/) using the _pak_ package:
-
-``` r
-install.packages("pak")
-pak::pak("vimc/vimclimate")
-```
-
-<!-- the [VIMC R-universe](https://vimc.r-universe.dev/) with:
+You can install the development version of _vimclimate_ from the [VIMC R-universe](https://vimc.r-universe.dev/) with:
 
 ```r
-installation from R-universe
+# installation from R-universe
 install.packages(
   "vimclimate", 
   repos = c(
@@ -47,8 +40,6 @@ install.packages(
 )
 ```
 
-or from -->
-
 ## Quick start
 
 WIP.
@@ -56,5 +47,3 @@ WIP.
 ## Related projects
 
 - [_clim2parquet_](https://vimc.github.io/clim2parquet/): Used to prepare climate data in Parquet format; this is the data accessed by _vimclimate_.
-
-## References

@@ -22,17 +22,11 @@ variable time-series data for use in modelling.
 
 ## Installation
 
-You can install the development version of *vimclimate* from GitHub
-[GitHub](https://github.com/) using the *pak* package:
+You can install the development version of *vimclimate* from the [VIMC
+R-universe](https://vimc.r-universe.dev/) with:
 
 ``` r
-install.packages("pak")
-pak::pak("vimc/vimclimate")
-```
-
-<!-- the [VIMC R-universe](https://vimc.r-universe.dev/) with:
-&#10;```r
-installation from R-universe
+# installation from R-universe
 install.packages(
   "vimclimate", 
   repos = c(
@@ -40,7 +34,6 @@ install.packages(
   )
 )
 ```
-&#10;or from -->
 
 ## Quick start
 
@@ -51,5 +44,3 @@ WIP.
 - [*clim2parquet*](https://vimc.github.io/clim2parquet/): Used to
   prepare climate data in Parquet format; this is the data accessed by
   *vimclimate*.
-
-## References
