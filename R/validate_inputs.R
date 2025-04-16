@@ -5,7 +5,7 @@
 #'
 #' @inheritParams load_local_vimc_climate
 #'
-#' @keywords internal validators
+#' @keywords internal validator
 #'
 #' @return
 #' A checked and in some cases processed input. Most functions also have
@@ -63,7 +63,7 @@ validate_country <- function(country) {
 #'
 #' @inheritParams date_range
 #'
-#' @keywords internal validators
+#' @keywords internal validator
 validate_date_range <- function(date_range) {
   assert_length(date_range, 2)
   assert_date(date_range)
@@ -73,7 +73,7 @@ validate_date_range <- function(date_range) {
 #'
 #' @inheritParams load_local_vimc_climate
 #'
-#' @keywords internal validators
+#' @keywords internal validator
 validate_admin_level <- function(admin_level) {
   checkmate::assert_integerish(
     admin_level,

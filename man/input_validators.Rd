@@ -41,4 +41,4 @@ integer-like number in the range \verb{[0, 3]}.
 Return checked inputs or print informative errors
 }
 \keyword{internal}
-\keyword{validators}
+\keyword{validator}

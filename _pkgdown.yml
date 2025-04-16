@@ -3,3 +3,18 @@
 url: https://vimc.github.io/vimclimate/
 template:
   bootstrap: 5
+
+reference:
+  - title: Data access functions
+    desc: Load data from a specified data location
+    contents:
+    - has_keyword("data_access")
+  - title: Package constants
+    desc: Small package data used in functions
+    contents:
+    - has_keyword("constants")
+  - title: Internal helper functions
+    desc: Helpers to validate inputs and locate files
+    contents:
+    - has_keyword("locator")
+    - has_keyword("validator")
