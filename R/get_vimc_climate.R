@@ -1,5 +1,9 @@
 #' Get climate data prepared for VIMC and stored locally
 #'
+#' @description
+#' Load climate data prepared for VIMC from a local directory.
+#'
+#'
 #' @param country A string for the country name, or for the country ISO 2- or 3-
 #' character code. E.g. one of "Canada", "CA", or "CAN". Input is checked
 #' against names and codes in \pkg{countrycode}.
@@ -19,6 +23,8 @@
 #' data. Only one unit may be passed at a time.
 #'
 #' @return A `<data.frame>` of climate data.
+#'
+#' @keywords data_access
 #'
 #' @export
 load_local_vimc_climate <- function(

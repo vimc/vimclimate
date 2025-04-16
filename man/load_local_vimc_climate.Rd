@@ -36,5 +36,6 @@ data. Only one unit may be passed at a time.}
 A \verb{<data.frame>} of climate data.
 }
 \description{
-Get climate data prepared for VIMC and stored locally
+Load climate data prepared for VIMC from a local directory.
 }
+\keyword{data_access}
