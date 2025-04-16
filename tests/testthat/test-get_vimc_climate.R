@@ -1,9 +1,9 @@
 test_that("Acessing local Parquet files works", {
   country <- "Malawi" # only supported country at present
-  daterange <- c("1990-01-01", "1990-01-10")
+  daterange <- lubridate::as_date(c("1990-01-01", "1990-01-10"))
   admin_level <- 0
 
-  data <- get_vimc_climate(
+  data <- load_local_vimc_climate(
     country,
     daterange,
     test_path("testdata"),
@@ -18,7 +18,7 @@ test_that("Acessing local Parquet files works", {
 
   # for admin level 1
   admin_level <- 1
-  data <- get_vimc_climate(
+  data <- load_local_vimc_climate(
     country,
     daterange,
     test_path("testdata"),
@@ -32,7 +32,7 @@ test_that("Acessing local Parquet files works", {
   checkmate::expect_list(
     lapply(
       names(data_source_names),
-      get_vimc_climate,
+      load_local_vimc_climate,
       country = country,
       date_range = daterange,
       data_location = test_path("testdata"),
@@ -44,11 +44,11 @@ test_that("Acessing local Parquet files works", {
 
 # Errors and warnings
 test_that("vimclimate generates expected errors and warnings", {
-  daterange <- c("1990-01-01", "1990-01-10")
+  daterange <- as.Date(c("1990-01-01", "1990-01-10"))
   admin_level <- 0
   # badly formed country name
   expect_error(
-    get_vimc_climate(
+    load_local_vimc_climate(
       country = "MLWI",
       daterange,
       test_path("testdata"),
@@ -59,7 +59,7 @@ test_that("vimclimate generates expected errors and warnings", {
 
   # data source not included
   expect_error(
-    get_vimc_climate(
+    load_local_vimc_climate(
       country = "MWI",
       daterange,
       test_path("testdata"),
@@ -70,7 +70,7 @@ test_that("vimclimate generates expected errors and warnings", {
 
   # date ranges are bad
   expect_error(
-    get_vimc_climate(
+    load_local_vimc_climate(
       country = "MWI",
       date_range = c(as.POSIXct("1990-01-01"), as.POSIXct("1990-01-10")),
       test_path("testdata"),
@@ -79,9 +79,9 @@ test_that("vimclimate generates expected errors and warnings", {
     )
   )
   expect_error(
-    get_vimc_climate(
+    load_local_vimc_climate(
       country = "MWI",
-      date_range = c(as.Date("1990-01-01")),
+      date_range = as.Date("1990-01-01"),
       test_path("testdata"),
       "PERSIANN",
       admin_level
@@ -90,7 +90,7 @@ test_that("vimclimate generates expected errors and warnings", {
 
   # data directory or file is not available
   expect_error(
-    get_vimc_climate(
+    load_local_vimc_climate(
       country = "MWI",
       daterange,
       test_path("testdata", "dummy"),
@@ -100,7 +100,17 @@ test_that("vimclimate generates expected errors and warnings", {
   )
 
   expect_error(
-    get_vimc_climate(
+    load_local_vimc_climate(
+      country = "MWI",
+      daterange,
+      test_path("testdata"),
+      "PERSIANN",
+      admin_level = 1
+    )
+  )
+
+  expect_error(
+    load_local_vimc_climate(
       country = "MWI",
       daterange,
       test_path("testdata"),
