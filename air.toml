@@ -1,0 +1,2 @@
+[format]
+exclude = ["import-standalone-utils-assert.R"]

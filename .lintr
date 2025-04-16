@@ -26,5 +26,6 @@ exclusions: list(
     ),
     # do no attempt to lint auto-generated files
     "R/RcppExports.R",
-    "R/cpp11.R"
+    "R/cpp11.R",
+    "R/import-standalone-utils-assert.R"
   )
