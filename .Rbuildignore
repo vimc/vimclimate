@@ -16,3 +16,5 @@
 ^air.toml$
 ^scratch-data$
 ^format-R.sh$
+^scratch.R$
+^\.covrignore$
