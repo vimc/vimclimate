@@ -7,9 +7,8 @@
 load_local_vimc_climate(
   country,
   date_range,
-  data_location = here::here(),
-  data_source = c("CHIRPS", "ERA5_mean", "ERA5_min", "ERA5_max", "ERA5_RH", "ERA5_SH",
-    "PERSIANN"),
+  data_location,
+  data_source = NULL,
   admin_level = c(0, 1, 2, 3)
 )
 }

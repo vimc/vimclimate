@@ -5,6 +5,7 @@
 \alias{validate_country}
 \alias{validate_date_range}
 \alias{validate_admin_level}
+\alias{validate_data_location}
 \title{Return checked inputs or print informative errors}
 \usage{
 validate_country(country)
@@ -12,6 +13,8 @@ validate_country(country)
 validate_date_range(date_range)
 
 validate_admin_level(admin_level)
+
+validate_data_location(data_location)
 }
 \arguments{
 \item{country}{A string for the country name, or for the country ISO 2- or 3-
@@ -23,6 +26,11 @@ which to get data.}
 
 \item{admin_level}{A numeric giving the GADM admin level for which to get
 data. Only one unit may be passed at a time.}
+
+\item{data_location}{A location relative to the current working directory
+to search for the data. Data for \code{country} are expected to live in
+\code{data_location/XYZ} as Parquet files, where \code{XYZ} is the ISO 3-character code
+for \code{country}. Defaults to the working directory.}
 }
 \value{
 A checked and in some cases processed input. Most functions also have

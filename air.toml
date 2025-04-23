@@ -1,2 +1,5 @@
 [format]
-exclude = ["import-standalone-utils-assert.R"]
+exclude = [
+    "import-standalone-utils-assert.R",
+    "import-standalone-utils-assert-path.R"
+]
