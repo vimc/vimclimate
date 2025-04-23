@@ -30,21 +30,14 @@
 load_local_vimc_climate <- function(
   country,
   date_range,
-  data_location = here::here(),
-  data_source = c(
-    "CHIRPS",
-    "ERA5_mean",
-    "ERA5_min",
-    "ERA5_max",
-    "ERA5_RH",
-    "ERA5_SH",
-    "PERSIANN"
-  ),
+  data_location,
+  data_source = NULL,
   admin_level = c(0, 1, 2, 3)
 ) {
   country <- validate_country(country)
   date_range <- validate_date_range(date_range)
-  data_source <- rlang::arg_match(data_source, multiple = FALSE)
+  data_location <- validate_data_location(data_location)
+  data_source <- match_value(data_source, names(data_source_names))
   admin_level <- validate_admin_level(admin_level)
 
   target_file <- locate_parquet_file(
