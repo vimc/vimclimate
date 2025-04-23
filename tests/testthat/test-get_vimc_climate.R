@@ -54,7 +54,8 @@ test_that("vimclimate generates expected errors and warnings", {
       test_path("testdata"),
       "CHIRPS",
       admin_level
-    )
+    ),
+    "Could not convert `country`"
   )
 
   # data source not included
@@ -65,7 +66,8 @@ test_that("vimclimate generates expected errors and warnings", {
       test_path("testdata"),
       "BIOCLIM",
       admin_level
-    )
+    ),
+    "'data_source' must be one of"
   )
 
   # date ranges are bad
@@ -76,7 +78,8 @@ test_that("vimclimate generates expected errors and warnings", {
       test_path("testdata"),
       "PERSIANN",
       admin_level
-    )
+    ),
+    "Expected 'date_range' to be a Date"
   )
   expect_error(
     load_local_vimc_climate(
@@ -85,7 +88,8 @@ test_that("vimclimate generates expected errors and warnings", {
       test_path("testdata"),
       "PERSIANN",
       admin_level
-    )
+    ),
+    "Expected 'date_range' to have length 2"
   )
 
   # data directory or file is not available
@@ -96,7 +100,8 @@ test_that("vimclimate generates expected errors and warnings", {
       test_path("testdata", "dummy"),
       "PERSIANN",
       admin_level
-    )
+    ),
+    "Directory does not exist"
   )
 
   expect_error(
@@ -106,16 +111,7 @@ test_that("vimclimate generates expected errors and warnings", {
       test_path("testdata"),
       "PERSIANN",
       admin_level = 1
-    )
-  )
-
-  expect_error(
-    load_local_vimc_climate(
-      country = "MWI",
-      daterange,
-      test_path("testdata"),
-      "PERSIANN",
-      admin_level = 2
-    )
+    ),
+    "(File)*(not found); please check that data are present"
   )
 })
