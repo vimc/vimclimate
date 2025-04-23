@@ -9,14 +9,12 @@
 # imports: cli
 # ---
 assert_scalar <- function(x, name = deparse(substitute(x)), arg = name,
-                          call = parent.frame()) {
+                          call = parent.frame())  {
   if (length(x) != 1) {
     cli::cli_abort(
       c("'{name}' must be a scalar",
-        i = "{name} has length {length(x)}"
-      ),
-      call = call, arg = arg
-    )
+        i = "{name} has length {length(x)}"),
+      call = call, arg = arg)
   }
   invisible(x)
 }
@@ -51,14 +49,10 @@ assert_integer <- function(x, name = deparse(substitute(x)),
     if (!isTRUE(all.equal(x, rx, tolerance = tolerance))) {
       cli::cli_abort(
         c("Expected '{name}' to be integer",
-          i = paste(
-            "{cli::qty(length(x))}The provided",
-            "{?value was/values were} numeric, but not very close",
-            "to integer values"
-          )
-        ),
-        arg = arg, call = call
-      )
+          i = paste("{cli::qty(length(x))}The provided",
+                    "{?value was/values were} numeric, but not very close",
+                    "to integer values")),
+        arg = arg, call = call)
     }
     x <- as.integer(rx)
   } else {
@@ -69,7 +63,7 @@ assert_integer <- function(x, name = deparse(substitute(x)),
 
 
 assert_logical <- function(x, name = deparse(substitute(x)),
-                           arg = name, call = parent.frame()) {
+                          arg = name, call = parent.frame()) {
   if (!is.logical(x)) {
     cli::cli_abort("Expected '{name}' to be logical", arg = arg, call = call)
   }
@@ -155,8 +149,7 @@ assert_length <- function(x, len, name = deparse(substitute(x)), arg = name,
   if (length(x) != len) {
     cli::cli_abort(
       "Expected '{name}' to have length {len}, but was length {length(x)}",
-      arg = arg, call = call
-    )
+      arg = arg, call = call)
   }
   invisible(x)
 }
@@ -166,8 +159,7 @@ assert_is <- function(x, what, name = deparse(substitute(x)), arg = name,
                       call = parent.frame()) {
   if (!inherits(x, what)) {
     cli::cli_abort("Expected '{name}' to be a '{what}' object",
-      arg = arg, call = call
-    )
+                   arg = arg, call = call)
   }
   invisible(x)
 }
@@ -177,8 +169,7 @@ assert_list <- function(x, name = deparse(substitute(x)), arg = name,
                         call = parent.frame()) {
   if (!is.list(x)) {
     cli::cli_abort("Expected '{name}' to be a list",
-      arg = arg, call = call
-    )
+                   arg = arg, call = call)
   }
   invisible(x)
 }
@@ -234,17 +225,14 @@ assert_named <- function(x, unique = FALSE, name = deparse(substitute(x)),
   }
   if (anyNA(nms) || any(nms == "")) {
     cli::cli_abort("All elements of '{name}' must be named",
-      call = call, arg = arg
-    )
+                   call = call, arg = arg)
   }
   if (unique && anyDuplicated(names(x))) {
     dups <- sprintf("'%s'", unique(names(x)[duplicated(names(x))]))
     cli::cli_abort(
       c("'{name}' must have unique names",
-        i = "Found {length(dups)} duplicate{?s}: {dups}"
-      ),
-      call = call, arg = arg
-    )
+        i = "Found {length(dups)} duplicate{?s}: {dups}"),
+      call = call, arg = arg)
   }
   invisible(x)
 }
@@ -255,13 +243,9 @@ match_value <- function(x, choices, name = deparse(substitute(x)), arg = name,
   assert_scalar_character(x, call = call, name = name, arg = arg)
   if (!(x %in% choices)) {
     choices_str <- paste(sprintf("'%s'", choices), collapse = ", ")
-    cli::cli_abort(
-      c("'{name}' must be one of {choices_str}",
-        i = "Instead we were given '{x}'"
-      ),
-      call = call,
-      arg = arg
-    )
+    cli::cli_abort(c("'{name}' must be one of {choices_str}",
+                     i = "Instead we were given '{x}'"), call = call,
+                   arg = arg)
   }
   x
 }
