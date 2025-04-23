@@ -17,32 +17,30 @@ locate_parquet_file <- function(
   admin_level,
   data_source
 ) {
-  checkmate::assert_directory_exists(
-    data_location
-  )
   data_location <- file.path(data_location, country_iso3c)
-  checkmate::assert_directory_exists(
-    data_location
-  )
+  assert_is_directory(data_location)
 
-  files <- list.files(data_location, full.names = TRUE)
-  data_source_id <- data_source_names[data_source]
+  data_source_id <- data_source_names[[data_source]]
   search_pattern <- sprintf(
     "%s_admin_%s.parquet",
     data_source_id,
     admin_level
   )
 
-  # search for files
-  target_file <- files[grepl(search_pattern, files)]
+  # NOTE: we expect only a single file to be returned
+  files <- list.files(
+    data_location,
+    pattern = search_pattern,
+    full.names = TRUE
+  )
 
-  # check that file is found
-  if (identical(target_file, character(0))) {
+  # using explicit check for more informative messages
+  if (length(files) == 0L) {
     cli::cli_abort(
-      "File '{target_file}' not found; please check that data are present in
+      "File '{search_pattern}' not found; please check that data are present in
       '{data_location}'"
     )
   }
 
-  target_file
+  files
 }
