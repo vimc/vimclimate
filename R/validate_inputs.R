@@ -83,3 +83,14 @@ validate_admin_level <- function(admin_level) {
     any.missing = FALSE
   )
 }
+
+#' @name input_validators
+#'
+#' @inheritParams load_local_vimc_climate
+#'
+#' @keywords internal validator
+validate_data_location <- function(data_location) {
+  assert_scalar(data_location)
+  assert_is_directory(data_location)
+  invisible(data_location) # assert_is_directory() has no return
+}
